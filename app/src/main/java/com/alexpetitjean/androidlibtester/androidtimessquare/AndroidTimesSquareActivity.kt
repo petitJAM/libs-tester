@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.alexpetitjean.androidlibtester.R
+import com.squareup.timessquare.CalendarPickerView.SelectionMode.RANGE
 import kotlinx.android.synthetic.main.activity_android_times_square.*
 import org.joda.time.DateTime
 
@@ -23,5 +24,8 @@ class AndroidTimesSquareActivity : AppCompatActivity() {
         val nextYear = DateTime.now().plusYears(1).toDate()
         val today = DateTime.now().toDate()
         calendarPickerView.init(today, nextYear)
+                .inMode(RANGE)
+        // I don't think this works
+        calendarPickerView.setDateSelectableFilter(DateFilter())
     }
 }
