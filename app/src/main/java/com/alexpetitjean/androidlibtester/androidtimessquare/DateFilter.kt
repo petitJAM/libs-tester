@@ -17,6 +17,9 @@ class DateFilter : CalendarPickerView.DateSelectableFilter {
     }
 
     override fun isDateSelectable(date: Date): Boolean {
-        return DateTime(date.time) !in badDates
+        val dt = DateTime(date.time)
+        return badDates.none {
+            dt.year() == it.year() && dt.dayOfYear() == it.dayOfYear()
+        }
     }
 }
